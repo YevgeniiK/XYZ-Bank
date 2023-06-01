@@ -52,5 +52,13 @@
             <version>2.17.3</version>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <activeProfile>local</activeProfile>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
