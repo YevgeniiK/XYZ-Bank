@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 
 public abstract class AbstractBaseTest {
+
     @BeforeClass
     public static void setUp() {
         String activeProfile = System.getProperty("activeProfile", "local");
