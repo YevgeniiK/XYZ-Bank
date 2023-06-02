@@ -6,7 +6,7 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 
-public class AbstractBaseTest {
+public abstract class AbstractBaseTest {
     @BeforeClass
     public static void setUp() {
         String activeProfile = System.getProperty("activeProfile", "local");
@@ -19,7 +19,7 @@ public class AbstractBaseTest {
             Configuration.browserCapabilities = new MutableCapabilities(chromeOptions);
         } else if (activeProfile.equalsIgnoreCase("remote")) {
             // Set up remote WebDriver
-            Configuration.remote = "http://192.168.68.195:4444/wd/hub/";
+            Configuration.remote = "http://localhost/:4444/wd/hub/";
             Configuration.browser = "chrome";
             Configuration.browserVersion = "102.0";
             ChromeOptions chromeOptions = new ChromeOptions();
