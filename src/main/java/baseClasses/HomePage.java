@@ -22,4 +22,7 @@ public class HomePage extends AbstractBasePage{
     public void bankManagerLoginButtonClick(){
         btnBankManagerLogin.click();
     }
+    public void customerLoginButtonClick(){
+        btnCustomerLogin.click();
+    }
 }
