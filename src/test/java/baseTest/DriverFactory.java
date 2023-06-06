@@ -5,6 +5,7 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactory {
+
     public static void setUpBrowser(String activeProfile) {
         if (activeProfile.equalsIgnoreCase("local")) {
             Configuration.browser = "chrome";

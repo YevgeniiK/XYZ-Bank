@@ -1,13 +1,9 @@
 package baseClasses;
 
 import com.codeborne.selenide.SelenideElement;
-
-
 import static com.codeborne.selenide.Selenide.$x;
 
-
-
-public class HomePage extends AbstractBasePage{
+public class HomePage extends AbstractBasePage {
 
     private static SelenideElement btnCustomerLogin = $x("//button [@ng-click='customer()']");
     private static SelenideElement btnBankManagerLogin = $x("//button [@ng-click='manager()']");
@@ -19,7 +15,12 @@ public class HomePage extends AbstractBasePage{
         return this;
     }
 
-    public void bankManagerLoginButtonClick(){
+    public void bankManagerLoginButtonClick() {
         btnBankManagerLogin.click();
+    }
+
+    public void customerLoginBtnClick() {
+        logger.info("Click Customer Login button");
+        btnCustomerLogin.click();
     }
 }
