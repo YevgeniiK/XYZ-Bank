@@ -5,9 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 
 import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.switchTo;
 
-public class HomePage extends AbstractBasePage{
+
+public class HomePage extends AbstractBasePage {
 
     private static SelenideElement btnCustomerLogin = $x("//button [@ng-click='customer()']");
     private static SelenideElement btnBankManagerLogin = $x("//button [@ng-click='manager()']");
@@ -16,6 +16,20 @@ public class HomePage extends AbstractBasePage{
 
     public static void main(String[] args) {
         WebDriverRunner.getWebDriver().manage().window();
-       Selenide. switchTo().alert().accept();
+        Selenide.switchTo().alert().accept();
+    }
+
+    public HomePage open() {
+        openURL("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
+        return this;
+    }
+
+    public void bankManagerLoginButtonClick() {
+        btnBankManagerLogin.click();
+    }
+
+    public void homePageButtonClick() {
+        btnHome.click();
     }
 }
+
