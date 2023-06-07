@@ -19,6 +19,10 @@ public class HomePage extends AbstractBasePage {
         btnBankManagerLogin.click();
     }
 
+    public void homePageButtonClick() {
+        btnHome.click();
+    }
+
     public HomePage customerLoginBtnClick() {
         logger.info("Click Customer Login button");
         btnCustomerLogin.click();
