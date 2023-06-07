@@ -23,7 +23,14 @@ public class BankManagerAccountTests extends AbstractBaseTest {
     public void bankManagerAccountButtonTest() {
         homePage.bankManagerLoginButtonClick();
         sleep(3000);
-        System.out.println(url());
         Assert.assertTrue(url().contains("manager"));
     }
+    @Test
+    public void homePageButtonTest() {
+        homePage.bankManagerLoginButtonClick();
+        homePage.homePageButtonClick();
+        sleep(3000);
+        Assert.assertTrue(url().contains("login"));
+    }
+
 }
