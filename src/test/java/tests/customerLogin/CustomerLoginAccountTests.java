@@ -21,7 +21,8 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
 
     @Test
     public void checkBtnWithdrown() {
-        homePage.customerLoginBtnClick();
+        homePage
+                .customerLoginBtnClick();
         customerLoginPage
                 .clickFieldSelectUserName()
                 .selectUserName()
