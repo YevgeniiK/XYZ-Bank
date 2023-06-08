@@ -2,9 +2,7 @@ package baseClasses;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
 import java.time.Duration;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class HomePage extends AbstractBasePage {
@@ -29,4 +27,9 @@ public class HomePage extends AbstractBasePage {
         return this;
     }
 
+    public HomePage customerLoginBtnClick() {
+        logger.info("Click Customer Login button");
+        btnCustomerLogin.click();
+        return this;
+    }
 }
