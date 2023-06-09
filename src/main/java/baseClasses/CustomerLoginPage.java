@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class CustomerLoginPage extends AbstractBasePage {
+
     private static SelenideElement fieldUserSelect = $x("//select[@name='userSelect']");
     private static SelenideElement selectUser = $x("//option[@value='3']");
     private static SelenideElement btnLogin = $x("//button[@type='submit']");

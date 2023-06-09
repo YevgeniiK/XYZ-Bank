@@ -17,12 +17,13 @@ public class HomePage extends AbstractBasePage {
         return this;
     }
 
-    public void bankManagerLoginButtonClick() {
-        btnBankManagerLogin.click();
+    public HomePage bankManagerLoginButtonClick() {
+        btnBankManagerLogin.shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
+        return this;
     }
 
     public HomePage homePageButtonClick() {
-        btnHome.shouldBe(Condition.visible, Duration.ofSeconds(6)).click();
+        btnHome.shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
         return this;
     }
 
