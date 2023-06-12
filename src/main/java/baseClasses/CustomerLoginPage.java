@@ -22,6 +22,10 @@ public class CustomerLoginPage extends AbstractBasePage {
         return this;
     }
 
+    public SelenideElement getTextBtnLogin() {
+        logger.info("Get button text Login");
+        return btnLogin;
+    }
     public CustomerLoginPage clickBtnLogin() {
         logger.info("Click button Login");
         btnLogin.click();

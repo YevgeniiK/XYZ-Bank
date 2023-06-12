@@ -30,6 +30,19 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .customerLoginBtnClick();
         assertions.assertUrlContains("customer");
     }
+
+    @Test
+    public void checkDropDownMenu() {
+        homePage
+                .customerLoginBtnClick();
+        customerLoginPage
+                .clickFieldSelectUserName()
+                .selectUserName()
+                .getTextBtnLogin().shouldHave(text("Login"));
+
+//        Assert.assertEquals(customerLoginPage.getTextBtnLogin().getText(), "Login");
+    }
+
     @Test
     public void checkBtnWithdrown() {
         homePage
