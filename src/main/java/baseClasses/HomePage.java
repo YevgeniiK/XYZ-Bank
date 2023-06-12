@@ -14,12 +14,7 @@ public class HomePage extends AbstractBasePage {
     private static SelenideElement btnHome = $x("//button [@ng-click='home()']");
     private static SelenideElement fieldHeading = $x("//strong [@class='mainHeading']");
 
-    public static void main(String[] args) {
-        WebDriverRunner.getWebDriver().manage().window();
-        Selenide.switchTo().alert().accept();
-    }
-
-    public HomePage open() {
+        public HomePage open() {
         openURL("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
         return this;
     }
