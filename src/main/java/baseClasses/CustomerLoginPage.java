@@ -1,10 +1,6 @@
 package baseClasses;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -18,7 +14,7 @@ public class CustomerLoginPage extends AbstractBasePage {
 
     public CustomerLoginPage clickBtnHome() {
         logger.info("Click button Home");
-        btnHome.shouldBe(visible, Duration.ofSeconds(5)).click();
+        btnHome.shouldBe(visible).click();
         return this;
     }
 

@@ -7,9 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
-
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
 
@@ -33,7 +31,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     }
 
     @Test
-    public void checkLogoutBtn() {
+    public void checkHomeBtn() {
         homePage
                 .open()
                 .customerLoginBtnClick();
