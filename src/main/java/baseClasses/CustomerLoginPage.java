@@ -29,6 +29,7 @@ public class CustomerLoginPage extends AbstractBasePage {
         btnLogin.getText().contains("Login");
         return this;
     }
+
     public CustomerLoginPage clickBtnLogin() {
         logger.info("Click button Login");
         btnLogin.click();

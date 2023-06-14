@@ -43,6 +43,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
 
         Assert.assertEquals(customerLoginPage.getBtnTextWithdawn().getText(), "Withdrawl");
     }
+
     @Test
     public void selectedCustomerAccountTest(){
         homePage
