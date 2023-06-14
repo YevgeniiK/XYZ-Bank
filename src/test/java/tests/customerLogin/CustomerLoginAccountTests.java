@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
 
@@ -29,6 +30,19 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
         homePage
                 .customerLoginBtnClick();
         assertions.assertUrlContains("customer");
+    }
+
+    @Test
+    public void checkLogoutBtn() {
+        homePage
+                .open()
+                .customerLoginBtnClick();
+        customerLoginPage
+                .clickFieldSelectUserName()
+                .selectUserName()
+                .clickBtnLogin()
+                .clickBtnHome();
+        assertions.assertUrlContains("login");
     }
     @Test
     public void checkBtnWithdrown() {
