@@ -6,6 +6,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Selenide.webdriver;
 
 public class Assertions {
+
     public void assertUrlContains(String s) {
         try {
             webdriver().shouldHave(WebDriverConditions.urlContaining(s));
@@ -14,4 +15,5 @@ public class Assertions {
             Assert.fail("No such URL found " + s);
         }
     }
+
 }
