@@ -84,6 +84,7 @@ public class CustomerLoginPage extends AbstractBasePage {
     }
 
     public CustomerLoginPage clickBtnSubmit() {
+        logger.info("Click button Submit");
         btnSubmit.shouldBe(visible).click();
         try {
             Thread.sleep(1000);
@@ -94,18 +95,22 @@ public class CustomerLoginPage extends AbstractBasePage {
     }
 
     public SelenideElement getDepositAmount() {
+        logger.info("Get deposit amount");
         return depositAmount.shouldBe(visible);
     }
 
     public SelenideElement getTransactionTypeCredit() {
+        logger.info("Get Transaction Type credit");
         return transactionTypeCredit.shouldBe(visible);
     }
 
     public SelenideElement getDebitAmount() {
+        logger.info("Get debit amount");
         return debitAmount.shouldBe(visible);
     }
 
     public SelenideElement getTransactionTypeDebit() {
+        logger.info("Get Transaction Type debit");
         return transactionTypeDebit.shouldBe(visible);
     }
 }
