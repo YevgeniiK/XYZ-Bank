@@ -43,4 +43,18 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
 
         Assert.assertEquals(customerLoginPage.getBtnTextWithdawn().getText(), "Withdrawl");
     }
+    @Test
+    public void depositTest(){
+        homePage
+                .customerLoginBtnClick();
+        customerLoginPage
+                .clickFieldSelectUserName()
+                .selectUserByName("Harry")
+                .clickBtnLogin()
+                .clickBtnDeposit()
+                .clickAmountField()
+                .fillAmountField(90)
+                .clickBtnDepositConfirm();
+        Assert.assertEquals(customerLoginPage.getDepositSuccessfulMessageText().getText(), "Deposit Successful");
+    }
 }
