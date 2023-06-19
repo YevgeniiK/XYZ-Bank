@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
 
@@ -22,6 +23,14 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
         customerLoginPage = new CustomerLoginPage();
         assertions = new Assertions();
         homePage.open();
+    }
+    public void loginCustomerTool(String username){
+        homePage
+                .customerLoginBtnClick();
+        customerLoginPage
+                .clickFieldSelectUserName()
+                .selectUserByName(username)
+                .clickBtnLogin();
     }
 
     @Test
@@ -42,5 +51,13 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .getBtnTextWithdawn().shouldHave(text("Withdrawl"));
 
         Assert.assertEquals(customerLoginPage.getBtnTextWithdawn().getText(), "Withdrawl");
+    }
+
+    @Test
+    public void checkBtnDeposit(){
+        loginCustomerTool("Hermoine");
+        customerLoginPage
+                .clickBtnDeposit();
+        Assert.assertEquals(customerLoginPage.getTextConfirmDepositBtn().getText(), "Deposit");
     }
 }

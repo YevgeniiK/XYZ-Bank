@@ -9,6 +9,8 @@ public class CustomerLoginPage extends AbstractBasePage {
     private static SelenideElement selectUser = $x("//option[@value='3']");
     private static SelenideElement btnLogin = $x("//button[@type='submit']");
     private static SelenideElement btnWithdrawl = $x("//button[@ng-class='btnClass3']");
+    private static SelenideElement btnDeposit = $x("//button[@ng-class = 'btnClass2']");
+    private static SelenideElement confirmDepositBtn = $x("//button[normalize-space() = 'Deposit' and @type]");
 
     public CustomerLoginPage clickFieldSelectUserName() {
         logger.info("Click field select UserName");
@@ -19,6 +21,11 @@ public class CustomerLoginPage extends AbstractBasePage {
     public CustomerLoginPage selectUserName() {
         logger.info("Select UserName");
         selectUser.click();
+        return this;
+    }
+
+    public CustomerLoginPage selectUserByName(String text){
+        fieldUserSelect.selectOptionContainingText(text);
         return this;
     }
 
@@ -37,5 +44,16 @@ public class CustomerLoginPage extends AbstractBasePage {
         logger.info("Click button Withdrawn");
         btnWithdrawl.click();
         return this;
+    }
+
+    public CustomerLoginPage clickBtnDeposit(){
+        logger.info("Click button Deposit");
+        btnDeposit.click();
+        return this;
+    }
+
+    public SelenideElement getTextConfirmDepositBtn(){
+        logger.info("Get text confirming deposit button");
+        return confirmDepositBtn;
     }
 }
