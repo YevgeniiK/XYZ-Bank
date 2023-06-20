@@ -8,7 +8,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
 
@@ -42,5 +45,16 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .getBtnTextWithdawn().shouldHave(text("Withdrawl"));
 
         Assert.assertEquals(customerLoginPage.getBtnTextWithdawn().getText(), "Withdrawl");
+    }
+
+    @Test
+    public void depositAndWithdrawlTest(){
+        customerLoginPage
+                .loginCustomerMethod("Harry")
+                .depositMethod(100);
+        Assert.assertEquals(customerLoginPage.getBalanceValue().getText(), "100");
+        customerLoginPage
+                .withdrawlMethod(90);
+        Assert.assertEquals(customerLoginPage.getBalanceValue().getText(), "10");
     }
 }
