@@ -1,7 +1,9 @@
 package baseClasses;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.getSelectedText;
 
 public class CustomerLoginPage extends AbstractBasePage {
 
@@ -19,6 +21,12 @@ public class CustomerLoginPage extends AbstractBasePage {
     public CustomerLoginPage selectUserName() {
         logger.info("Select UserName");
         selectUser.click();
+        return this;
+    }
+
+    public CustomerLoginPage getBtnLogin(){
+        logger.info("Get button text Login");
+        btnLogin.getText().contains("Login");
         return this;
     }
 
