@@ -25,23 +25,7 @@ public class BankManagerAccountTests extends AbstractBaseTest {
         assertions = new Assertions();
         homePage.open();
     }
-    public void regNewCustomerAccount(String firstName, String lastName, String postCode, String nameOfSelectedToEnter, String currency){
-        homePage
-                .bankManagerLoginButtonClick();
-        bankManagerLoginPage
-                .addCustomerLoginButtonClick()
-                .fillFirstNameField(firstName)
-                .fillLastNameField(lastName)
-                .fillPostCode(postCode)
-                .addCustomerConfirmButtonClick()
-                .openAccountButtonClick()
-                .selectCustomerFieldClick()
-                .selectingCustomerFromList(nameOfSelectedToEnter)
-                .selectCurrencyFieldClick()
-                .selectingCurrencyFromList(currency)
-                .processButtonClick()
-                .returnOnHomePageClick();
-    }
+
 
     @Test
     public void bankManagerAccountButtonTest() {
@@ -65,7 +49,9 @@ public class BankManagerAccountTests extends AbstractBaseTest {
     }
     @Test
     public void registrationNewCustomerTest1() {
-        regNewCustomerAccount("Josh","Browny", "E7777E", "Josh", "Pound" );
+        bankManagerLoginPage
+                .regNewCustomerAccountMethod("Josh","Browny", "E7777E")
+                .chooseCurrencyMethod( "Josh", "Pound" );
         homePage
                 .customerLoginBtnClick();
         customerLoginPage
@@ -76,7 +62,9 @@ public class BankManagerAccountTests extends AbstractBaseTest {
     }
         @Test
         public void registrationNewCustomerTest2() {
-            regNewCustomerAccount("James", "Browny", "E8888E", "James", "Dollar");
+        bankManagerLoginPage
+                .regNewCustomerAccountMethod("James", "Browny", "E8888E")
+                .chooseCurrencyMethod("James", "Dollar");
             homePage
                     .customerLoginBtnClick();
             customerLoginPage
@@ -87,7 +75,9 @@ public class BankManagerAccountTests extends AbstractBaseTest {
         }
         @Test
         public void registrationNewCustomerTest3(){
-            regNewCustomerAccount("Jordan", "Browny", "E9999E", "Jordan", "Rupee");
+        bankManagerLoginPage
+                .regNewCustomerAccountMethod("Jordan", "Browny", "E9999E")
+                .chooseCurrencyMethod("Jordan", "Rupee");
             homePage
                     .customerLoginBtnClick();
             customerLoginPage

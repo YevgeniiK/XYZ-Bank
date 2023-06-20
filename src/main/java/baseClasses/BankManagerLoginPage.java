@@ -19,6 +19,30 @@ public class BankManagerLoginPage extends AbstractBasePage {
     private static SelenideElement selectCurrency = $x("//select[@name ='currency']");
     private static SelenideElement processButton = $x("//button[@type= 'submit' and normalize-space()= 'Process']");
     private static SelenideElement returnOnHomePageButton = $x("//button[@class ='btn home']");
+    public BankManagerLoginPage regNewCustomerAccountMethod(String firstName, String lastName, String postCode){
+        new HomePage()
+                .bankManagerLoginButtonClick();
+        new BankManagerLoginPage()
+                .addCustomerLoginButtonClick()
+                .fillFirstNameField(firstName)
+                .fillLastNameField(lastName)
+                .fillPostCode(postCode)
+                .addCustomerConfirmButtonClick();
+        return this;
+    }
+
+    public BankManagerLoginPage chooseCurrencyMethod(String nameToEnter, String currency){
+        new BankManagerLoginPage()
+                .openAccountButtonClick()
+                .selectCustomerFieldClick()
+                .selectCustomerToEnter(nameToEnter)
+                .selectCurrencyFieldClick()
+                .selectCurrency(currency)
+                .processButtonClick()
+                .returnOnHomePageClick();
+        return this;
+    }
+
 
     public BankManagerLoginPage addCustomerLoginButtonClick() {
         addCustomerLoginBtn.shouldBe(visible, Duration.ofSeconds(3)).click();
@@ -59,7 +83,7 @@ public class BankManagerLoginPage extends AbstractBasePage {
         return this;
     }
 
-    public BankManagerLoginPage selectingCustomerFromList(String text){
+    public BankManagerLoginPage selectCustomerToEnter(String text){
         selectCustomerField.selectOptionContainingText(text);
         return this;
     }
@@ -69,7 +93,7 @@ public class BankManagerLoginPage extends AbstractBasePage {
         return this;
     }
 
-    public BankManagerLoginPage selectingCurrencyFromList(String text){
+    public BankManagerLoginPage selectCurrency(String text){
         selectCurrency.selectOptionContainingText(text);
         return this;
     }
