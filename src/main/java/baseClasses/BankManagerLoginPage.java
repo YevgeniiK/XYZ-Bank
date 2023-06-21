@@ -40,7 +40,6 @@ public class BankManagerLoginPage extends AbstractBasePage {
     }
 
 
-
     public BankManagerLoginPage getFirstNameCustomer() {
         logger.info("Get text First Name Customer");
         // add contains("")
@@ -55,7 +54,7 @@ public class BankManagerLoginPage extends AbstractBasePage {
         return this;
     }
 
-    public BankManagerLoginPage addNewCustomer(String firstName,String lastName,String postCode) {
+    public BankManagerLoginPage addNewCustomer(String firstName, String lastName, String postCode) {
         logger.info("Set text on First Name aadCustomers Input");
         setFirstNameInp.shouldBe(visible, Duration.ofSeconds(3)).setValue(firstName);
         logger.info("Set text on Last Name aadCustomers Input");
@@ -71,27 +70,9 @@ public class BankManagerLoginPage extends AbstractBasePage {
 
     public BankManagerLoginPage assertPresenceCustomer() {
         logger.info("Customer not found");
-        firstNameCustomerTd.shouldNot(exist);;
+        firstNameCustomerTd.shouldNot(exist);
         return this;
     }
-
-//    public BankManagerLoginPage setFirstNameInput(String value) {
-//        logger.info("Set text on First Name aadCustomers Input");
-//        setFirstNameInp.shouldBe(visible, Duration.ofSeconds(3)).setValue(value);
-//        return this;
-//    }
-//
-//    public BankManagerLoginPage setLastNameInput(String value) {
-//        logger.info("Set text on Last Name aadCustomers Input");
-//        setLastNameInp.shouldBe(visible, Duration.ofSeconds(3)).setValue(value);
-//        return this;
-//    }
-//
-//    public BankManagerLoginPage setPostCodeInput(String value) {
-//        logger.info("Set text on Post Code aadCustomers Input");
-//        setPostCode.shouldBe(visible, Duration.ofSeconds(3)).setValue(value);
-//        return this;
-//    }
 
 
 }
