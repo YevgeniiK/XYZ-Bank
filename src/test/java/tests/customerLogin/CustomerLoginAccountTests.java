@@ -1,5 +1,6 @@
 package tests.customerLogin;
 
+import baseClasses.BankManagerLoginPage;
 import baseClasses.CustomerLoginPage;
 import baseClasses.HomePage;
 import baseTest.AbstractBaseTest;
@@ -14,12 +15,14 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
 
     private HomePage homePage;
     private CustomerLoginPage customerLoginPage;
+    private BankManagerLoginPage bankManagerLoginPage;
     private Assertions assertions;
 
     @BeforeMethod
     public void openBankHomePage() {
         homePage = new HomePage();
         customerLoginPage = new CustomerLoginPage();
+        bankManagerLoginPage = new BankManagerLoginPage();
         assertions = new Assertions();
         homePage.open();
     }
@@ -30,6 +33,25 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .customerLoginBtnClick();
         assertions.assertUrlContains("customer");
     }
+
+    @Test
+    public void checkLogoutBtn() {
+        homePage
+                .bankManagerLoginButtonClick();
+        bankManagerLoginPage
+                .addCustomerLoginButtonClick()
+                .createNewCustomer();
+        homePage
+                .open()
+                .customerLoginBtnClick();
+        customerLoginPage
+                .clickFieldSelectUserName()
+                .selectUserName()
+                .clickBtnLogin()
+                .clickBtnLogout();
+        assertions.assertUrlContains("customer");
+    }
+
     @Test
     public void checkBtnWithdrown() {
         homePage
