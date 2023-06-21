@@ -8,7 +8,8 @@ import static com.codeborne.selenide.Selenide.getSelectedText;
 public class CustomerLoginPage extends AbstractBasePage {
 
     private static SelenideElement fieldUserSelect = $x("//select[@name='userSelect']");
-    private static SelenideElement selectUser = $x("//option[@value='3']");
+    private static SelenideElement msgCreateAccount = $x("//*[contains(text(),'Please open an account with us.')]");
+    private static SelenideElement selectUser = $x("//option[@value='6']");
     private static SelenideElement btnLogin = $x("//button[@type='submit']");
     private static SelenideElement btnWithdrawl = $x("//button[@ng-class='btnClass3']");
 
@@ -34,6 +35,11 @@ public class CustomerLoginPage extends AbstractBasePage {
         logger.info("Click button Login");
         btnLogin.click();
         return this;
+    }
+
+    public SelenideElement getMsgCreateAccount() {
+        logger.info("Get text Please open an account with us.");
+        return msgCreateAccount;
     }
 
     public SelenideElement getBtnTextWithdawn() {
