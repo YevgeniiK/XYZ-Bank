@@ -2,6 +2,7 @@ package baseClasses;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.getSelectedText;
 
@@ -10,17 +11,24 @@ public class CustomerLoginPage extends AbstractBasePage {
     private static SelenideElement fieldUserSelect = $x("//select[@name='userSelect']");
     private static SelenideElement selectUser = $x("//option[@value='3']");
     private static SelenideElement btnLogin = $x("//button[@type='submit']");
+    private static SelenideElement btnHome = $x("//button [@ng-click='home()']");
     private static SelenideElement btnWithdrawl = $x("//button[@ng-class='btnClass3']");
+
+    public CustomerLoginPage clickBtnHome() {
+        logger.info("Click button Home");
+        btnHome.shouldBe(visible).click();
+        return this;
+    }
 
     public CustomerLoginPage clickFieldSelectUserName() {
         logger.info("Click field select UserName");
-        fieldUserSelect.pressEnter();
+        fieldUserSelect.shouldBe(visible).click();
         return this;
     }
 
     public CustomerLoginPage selectUserName() {
         logger.info("Select UserName");
-        selectUser.click();
+        selectUser.shouldBe(visible).click();
         return this;
     }
 
