@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
@@ -30,8 +31,9 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .customerLoginBtnClick();
         assertions.assertUrlContains("customer");
     }
+
     @Test
-    public void checkBtnWithdrown() {
+    public void checkBtnWithdrawn() {
         homePage
                 .customerLoginBtnClick();
         customerLoginPage
@@ -39,9 +41,35 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .selectUserName()
                 .clickBtnLogin()
                 .clickBtnWithdrawn()
-                .getBtnTextWithdawn().shouldHave(text("Withdrawl"));
+                .getBtnTextWithdrawn().shouldHave(text("Withdrawl"));
 
-        Assert.assertEquals(customerLoginPage.getBtnTextWithdawn().getText(), "Withdrawl");
+        Assert.assertEquals(customerLoginPage.getBtnTextWithdrawn().getText(), "Withdrawl");
+    }
+
+    @Test
+    public void checkBtnTransactions() {
+        homePage
+                .customerLoginBtnClick();
+        customerLoginPage
+                .clickFieldSelectUserName()
+                .selectUserName()
+                .clickBtnLogin()
+                .getBtnTextTransactions().shouldHave(text("Transactions"));
+        customerLoginPage
+                .clickBtnDeposit()
+                .enterFieldAmountDeposit("100")
+                .clickBtnSubmit()
+                .clickBtnWithdrawn()
+                .enterFieldAmountWithdrawn("50")
+                .clickBtnSubmit()
+                .clickBtnTransactions()
+                .getDepositAmount().shouldHave(exactText("100"));
+        customerLoginPage
+                .getTransactionTypeCredit().shouldHave(text("Credit"));
+        customerLoginPage
+                .getDebitAmount().shouldHave(text("50"));
+        customerLoginPage
+                .getTransactionTypeDebit().shouldHave(text("Debit"));
     }
 
     @Test
