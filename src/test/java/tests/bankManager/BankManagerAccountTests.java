@@ -50,13 +50,15 @@ public class BankManagerAccountTests extends AbstractBaseTest {
     @Test
     public void checkTheAccountSearchAndDelete() {
         List<BankManagerLoginPage> customerNames = new ArrayList<>();
-        List<String> expectedCustomerNames = Arrays.asList("Ivan", "Ivan", "Ivan");
+        List<String> expectedCustomerNames = Arrays.asList("Ivan", "Ivan", "Ivan", "Ivan");
+        String accountNumber = bankManagerLoginPage.getAccountNumber();
 
         homePage.
                 bankManagerLoginButtonClick();
         bankManagerLoginPage
                 .addCustomerLoginButtonClick()
                 .addNewCustomer("Ivan", "Ivanenko", "E5512")
+                .addCurrencyToAccount("Ivan Ivanenko", "Dollar")
                 .customersButtonClick()
                 .setSearchCustomersInput("Ivan");
         customerNames.add(bankManagerLoginPage.getFirstNameCustomer());
@@ -69,11 +71,19 @@ public class BankManagerAccountTests extends AbstractBaseTest {
                 .setSearchCustomersInput("E5512");
         customerNames.add(bankManagerLoginPage.getFirstNameCustomer());
 
-        bankManagerLoginPage
-                .deleteCustomersButtonClick()
-                .assertPresenceCustomer();
+        bankManagerLoginPage.
+                setSearchCustomersInput(accountNumber);
+        customerNames.add(bankManagerLoginPage.getFirstNameCustomer());
 
-        Assert.assertTrue(customerNames.containsAll(expectedCustomerNames));
+        bankManagerLoginPage
+                .setSearchCustomersInput("Ivanenko");
+        bankManagerLoginPage
+                .deleteCustomersButtonClick();
+
+
+
+        bankManagerLoginPage.assertPresenceCustomer();
+        Assert.assertFalse(customerNames.containsAll(expectedCustomerNames));
     }
 
 
