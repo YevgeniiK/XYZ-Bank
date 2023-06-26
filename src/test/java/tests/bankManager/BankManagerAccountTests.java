@@ -38,8 +38,33 @@ public class BankManagerAccountTests extends AbstractBaseTest {
     @Test
     public void addCustomerButtonTest() {
         homePage.bankManagerLoginButtonClick();
-        bankManagerLoginPage.addCustomerLoginButtonClick();
+        bankManagerLoginPage.addCustomerLoginBtnClick();
         assertions.assertUrlContains("addCust");
+    }
+
+    @Test
+    public void addNewCustomerTest() {
+        homePage.bankManagerLoginButtonClick();
+        bankManagerLoginPage
+                .addCustomerLoginBtnClick()
+                .firstNameFieldFilling()
+                .lastNameFieldFilling()
+                .postCodeFieldFilling()
+                .addCustomerSmallBtnClick()
+                .openAccountBtnClick()
+                .dropdownCustomerMenuClick()
+                .dropdownCurrencyMenuClick(1)
+                .processBtnClick()
+                .dropdownCustomerMenuClick()
+                .dropdownCurrencyMenuClick(2)
+                .processBtnClick()
+                .dropdownCustomerMenuClick()
+                .dropdownCurrencyMenuClick(3)
+                .processBtnClick()
+                .customersBtnClick()
+                .accountNumberCheck("1016")
+                .accountNumberCheck("1017")
+                .accountNumberCheck("1018");
     }
 
 }

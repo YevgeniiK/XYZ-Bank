@@ -11,14 +11,20 @@ public class DriverFactory {
             Configuration.browser = "chrome";
             Configuration.browserVersion = "102.0";
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions
+                    .addArguments("--remote-allow-origins=*")
+                    .addArguments("--disable-notifications")
+                    .addArguments("--disable-popup-blocking");
             Configuration.browserCapabilities = new MutableCapabilities(chromeOptions);
         } else if (activeProfile.equalsIgnoreCase("remote")) {
             Configuration.remote = "http://localhost:4444/wd/hub";
             Configuration.browser = "chrome";
             Configuration.browserVersion = "102.0";
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions
+                    .addArguments("--remote-allow-origins=*")
+                    .addArguments("--disable-notifications")
+                    .addArguments("--disable-popup-blocking");
             Configuration.browserCapabilities = new MutableCapabilities(chromeOptions);
             Configuration.headless = true;
         }
