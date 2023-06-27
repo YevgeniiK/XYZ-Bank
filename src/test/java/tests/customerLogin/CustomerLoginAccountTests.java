@@ -88,7 +88,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .clickSendDeposit();
         arrayMassage.add(customerLoginPage.getMassageDeposit());
 
-
+        Assert.assertFalse(arrayMassageTest.containsAll(arrayMassage));
 
     }
 
