@@ -17,56 +17,51 @@ public class CustomerLoginPage extends AbstractBasePage {
     private static SelenideElement btnWithdrawl = $x("//button[@ng-class='btnClass3']");
     private static SelenideElement btnDeposit = $x("//button[@ng-click=\"deposit()\"]");
     private static SelenideElement inpDeposit = $x("//div[@class=\"form-group\"]/input");
-    private static SelenideElement buttonSendDeposit = $x("//button[@class=\"btn btn-default\"]");
+    private static SelenideElement intWithdrawl = $x("//div[@class=\"form-group\"]/input");
+    private static SelenideElement buttonSend = $x("//button[@class=\"btn btn-default\"]");
     private static SelenideElement massageDepositSuccessful = $x("//span[@class=\"error ng-binding\"]");
 
 
 
-
-
-
-    public CustomerLoginPage clickSendDeposit(){
-        logger.info("Send Deposit");
-        buttonSendDeposit.shouldBe(visible, Duration.ofSeconds(3)).click();
+    public CustomerLoginPage clickWithdrawl() {
+        logger.info("Click Withdrawl");
+        buttonSend.shouldBe(visible, Duration.ofSeconds(3)).click();
         return this;
     }
 
-    public CustomerLoginPage getMassageDeposit() {
+
+
+    public CustomerLoginPage getMassageWithdrawl() {
         logger.info("Get massage");
 
-        String resultMassageDeposit;
+        String resultMassageWithdrawl;
 
         if (massageDepositSuccessful.exists()) {
             String text = massageDepositSuccessful.getText();
-            if (text.equals("Deposit Successful")) {
-                resultMassageDeposit = "text true";
+            if (text.equals("Transaction successful\n")) {
+                resultMassageWithdrawl = "text true";
             } else {
-                resultMassageDeposit = "text false";
+                resultMassageWithdrawl = "text false";
             }
         } else {
-            resultMassageDeposit = "element not found";
+            resultMassageWithdrawl = "element not found";
         }
 
         return this;
     }
 
 
-
-    public CustomerLoginPage selectAccount(String customerName){
+    public CustomerLoginPage selectAccount(String customerName) {
         logger.info("Select line USer Name in select");
         fieldUserSelect.selectOptionContainingText(customerName);
         return this;
     }
 
-    public CustomerLoginPage clickButtonDeposit() {
-        logger.info("click button Deposit");
-        btnDeposit.click();
-        return this;
-    }
 
-    public CustomerLoginPage setValueDeposit(String deposit) {
-        logger.info("Set text on First Name aadCustomers Input");
-        inpDeposit.shouldBe(visible, Duration.ofSeconds(3)).setValue(deposit);
+
+    public CustomerLoginPage setValueWithdrawl(String withdrawl) {
+        logger.info("Set value withdrawl");
+        intWithdrawl.shouldBe(visible, Duration.ofSeconds(3)).setValue(withdrawl);
         return this;
     }
 
@@ -82,7 +77,7 @@ public class CustomerLoginPage extends AbstractBasePage {
         return this;
     }
 
-    public CustomerLoginPage getBtnLogin(){
+    public CustomerLoginPage getBtnLogin() {
         logger.info("Get button text Login");
         btnLogin.getText().contains("Login");
         return this;

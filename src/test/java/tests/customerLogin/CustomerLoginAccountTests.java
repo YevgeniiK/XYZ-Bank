@@ -66,7 +66,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     }
 
     @Test
-    public void check_the_deposit_not_successful(){
+    public void check_the_withdrawl_not_successful(){
 
         List<CustomerLoginPage> arrayMassage = new ArrayList<>();
         List<String> arrayMassageTest = Arrays.asList("element not found", "element not found");
@@ -83,15 +83,15 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
         customerLoginPage
                 .selectAccount("Ivan Ivanenko")
                 .clickBtnLogin()
-                .clickButtonDeposit()
-                .setValueDeposit("0")
-                .clickSendDeposit();
-        arrayMassage.add(customerLoginPage.getMassageDeposit());
+                .clickBtnWithdrawn()
+                .setValueWithdrawl("0")
+                .clickWithdrawl();
+        arrayMassage.add( customerLoginPage.getMassageWithdrawl());
 
         customerLoginPage
-                .setValueDeposit("-5")
-                .clickSendDeposit();
-        arrayMassage.add(customerLoginPage.getMassageDeposit());
+                .setValueWithdrawl("-5")
+                .clickWithdrawl();
+        arrayMassage.add(customerLoginPage.getMassageWithdrawl());
 
         Assert.assertFalse(arrayMassageTest.containsAll(arrayMassage));
 
