@@ -22,11 +22,14 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     private Assertions assertions;
     private BankManagerLoginPage bankManagerLoginPage;
 
+
+
     @BeforeMethod
     public void openBankHomePage() {
         homePage = new HomePage();
         customerLoginPage = new CustomerLoginPage();
         assertions = new Assertions();
+        bankManagerLoginPage = new BankManagerLoginPage();
         homePage.open();
     }
 
@@ -68,6 +71,8 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
         List<CustomerLoginPage> arrayMassage = new ArrayList<>();
         List<String> arrayMassageTest = Arrays.asList("element not found", "element not found");
 
+        homePage
+                .bankManagerLoginButtonClick();
         bankManagerLoginPage
                 .addCustomerLoginButtonClick()
                 .addNewCustomer("Ivan", "Ivanenko", "E5512")
