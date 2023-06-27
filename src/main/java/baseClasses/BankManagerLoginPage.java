@@ -17,12 +17,11 @@ public class BankManagerLoginPage extends AbstractBasePage {
     private static SelenideElement setFirstNameInp = $x("//input[@placeholder=\"First Name\"]");
     private static SelenideElement setLastNameInp = $x("//input[@placeholder=\"Last Name\"]");
     private static SelenideElement setPostCode = $x("//input[@placeholder=\"Post Code\"]");
-    private static SelenideElement searchCustomersInp = $x("//input[@placeholder=\"Search Customer\"]");
-    private static SelenideElement firstNameCustomerTd = $x("//td[@class=\"ng-binding\"][1]");
     private static SelenideElement addCustomerBtn = $x("//button[@class=\"btn btn-default\"]");
     private static SelenideElement customerNameSlc = $x("//select[@name=\"userSelect\"]");
     private static SelenideElement customerCurrencySlc = $x("//select[@name=\"currency\"]");
     private static SelenideElement addAccountNumberBtn = $x("//button[@type=\"submit\"]");
+    private static SelenideElement goHomeBtn = $x("//button[@class=\"btn home\"]");
 
     private String accountNumber;
 
@@ -68,15 +67,19 @@ public class BankManagerLoginPage extends AbstractBasePage {
         return this;
     }
 
+    public BankManagerLoginPage clickGoHomePage() {
+
+        logger.info("Click go Home ");
+        goHomeBtn.click();
+        return this;
+    }
+
+
     public String getAccountNumber() {
         return accountNumber;
     }
 
-    public BankManagerLoginPage assertPresenceCustomer() {
-        logger.info("Customer not found");
-        firstNameCustomerTd.shouldNot(exist);
-        return this;
-    }
+
 
 
 }

@@ -62,8 +62,22 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     public void check_the_deposit_not_successful(){
         bankManagerLoginPage
                 .addCustomerLoginButtonClick()
-                .addNewCustomer("Ivan", "Ivanenko", "Dollar")
-                .addCurrencyToAccount("Ivan Ivanenko","Dollar");
+                .addNewCustomer("Ivan", "Ivanenko", "E5512")
+                .addCurrencyToAccount("Ivan Ivanenko", "Dollar")
+                .clickGoHomePage();
+        homePage
+                .customerLoginBtnClick();
+        customerLoginPage
+                .selectAccount("Ivan Ivanenko")
+                .clickBtnLogin()
+                .clickButtonDeposit()
+                .setValueDeposit("0")
+                .clickSendDeposit()
+                .getMassageDeposit()
+                .setValueDeposit("-5")
+                .clickSendDeposit()
+                .getMassageDeposit();
+
 
     }
 
