@@ -1,5 +1,6 @@
 package tests.customerLogin;
 
+import baseClasses.BankManagerLoginPage;
 import baseClasses.CustomerLoginPage;
 import baseClasses.HomePage;
 import baseTest.AbstractBaseTest;
@@ -15,6 +16,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     private HomePage homePage;
     private CustomerLoginPage customerLoginPage;
     private Assertions assertions;
+    private BankManagerLoginPage bankManagerLoginPage;
 
     @BeforeMethod
     public void openBankHomePage() {
@@ -55,4 +57,14 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .clickBtnLogin();
         assertions.assertUrlContains("account");
     }
+
+    @Test
+    public void check_the_deposit_not_successful(){
+        bankManagerLoginPage
+                .addCustomerLoginButtonClick()
+                .addNewCustomer("Ivan", "Ivanenko", "Dollar")
+                .addCurrencyToAccount("Ivan Ivanenko","Dollar");
+
+    }
+
 }
