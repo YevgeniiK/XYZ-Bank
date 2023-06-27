@@ -9,6 +9,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.text;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
@@ -60,6 +64,10 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
 
     @Test
     public void check_the_deposit_not_successful(){
+
+        List<CustomerLoginPage> arrayMassage = new ArrayList<>();
+        List<String> arrayMassageTest = Arrays.asList("element not found", "element not found");
+
         bankManagerLoginPage
                 .addCustomerLoginButtonClick()
                 .addNewCustomer("Ivan", "Ivanenko", "E5512")
@@ -72,11 +80,14 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .clickBtnLogin()
                 .clickButtonDeposit()
                 .setValueDeposit("0")
-                .clickSendDeposit()
-                .getMassageDeposit()
+                .clickSendDeposit();
+        arrayMassage.add(customerLoginPage.getMassageDeposit());
+
+        customerLoginPage
                 .setValueDeposit("-5")
-                .clickSendDeposit()
-                .getMassageDeposit();
+                .clickSendDeposit();
+        arrayMassage.add(customerLoginPage.getMassageDeposit());
+
 
 
     }
