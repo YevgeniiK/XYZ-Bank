@@ -22,13 +22,11 @@ public class CustomerLoginPage extends AbstractBasePage {
     private static SelenideElement massageDepositSuccessful = $x("//span[@class=\"error ng-binding\"]");
 
 
-
     public CustomerLoginPage clickWithdrawl() {
         logger.info("Click Withdrawl");
         buttonSend.shouldBe(visible, Duration.ofSeconds(3)).click();
         return this;
     }
-
 
 
     public CustomerLoginPage getMassageWithdrawl() {
@@ -56,7 +54,6 @@ public class CustomerLoginPage extends AbstractBasePage {
         fieldUserSelect.selectOptionContainingText(customerName);
         return this;
     }
-
 
 
     public CustomerLoginPage setValueWithdrawl(String withdrawl) {

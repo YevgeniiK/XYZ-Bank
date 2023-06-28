@@ -23,7 +23,6 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     private BankManagerLoginPage bankManagerLoginPage;
 
 
-
     @BeforeMethod
     public void openBankHomePage() {
         homePage = new HomePage();
@@ -39,6 +38,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .customerLoginBtnClick();
         assertions.assertUrlContains("customer");
     }
+
     @Test
     public void checkBtnWithdrown() {
         homePage
@@ -54,7 +54,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     }
 
     @Test
-    public void selectedCustomerAccountTest(){
+    public void selectedCustomerAccountTest() {
         homePage
                 .customerLoginBtnClick();
         customerLoginPage
@@ -66,7 +66,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     }
 
     @Test
-    public void check_the_withdrawl_not_successful(){
+    public void check_the_withdrawl_not_successful() {
 
         List<CustomerLoginPage> arrayMassage = new ArrayList<>();
         List<String> arrayMassageTest = Arrays.asList("element not found", "element not found");
@@ -86,7 +86,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .clickBtnWithdrawn()
                 .setValueWithdrawl("0")
                 .clickWithdrawl();
-        arrayMassage.add( customerLoginPage.getMassageWithdrawl());
+        arrayMassage.add(customerLoginPage.getMassageWithdrawl());
 
         customerLoginPage
                 .setValueWithdrawl("-5")

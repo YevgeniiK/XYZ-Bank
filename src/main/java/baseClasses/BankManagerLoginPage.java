@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class BankManagerLoginPage extends AbstractBasePage {
 
     private static SelenideElement addCustomerLoginBtn = $x("//button[normalize-space()='Add Customer']");
-    private static SelenideElement openAccountBtn =$x("//button[normalize-space()='Open Account']");
+    private static SelenideElement openAccountBtn = $x("//button[normalize-space()='Open Account']");
     private static SelenideElement setFirstNameInp = $x("//input[@placeholder=\"First Name\"]");
     private static SelenideElement setLastNameInp = $x("//input[@placeholder=\"Last Name\"]");
     private static SelenideElement setPostCode = $x("//input[@placeholder=\"Post Code\"]");
@@ -26,14 +26,10 @@ public class BankManagerLoginPage extends AbstractBasePage {
     private String accountNumber;
 
 
-
     public BankManagerLoginPage addCustomerLoginButtonClick() {
         addCustomerLoginBtn.shouldBe(visible, Duration.ofSeconds(3)).click();
         return this;
     }
-
-
-
 
 
     public BankManagerLoginPage addNewCustomer(String firstName, String lastName, String postCode) {
@@ -78,8 +74,6 @@ public class BankManagerLoginPage extends AbstractBasePage {
     public String getAccountNumber() {
         return accountNumber;
     }
-
-
 
 
 }
