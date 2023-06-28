@@ -1,5 +1,6 @@
 package tests.customerLogin;
 
+import baseClasses.BankManagerLoginPage;
 import baseClasses.CustomerLoginPage;
 import baseClasses.HomePage;
 import baseTest.AbstractBaseTest;
@@ -8,6 +9,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.bankManager.Assertions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.text;
 
 public class CustomerLoginAccountTests extends AbstractBaseTest {
@@ -15,12 +20,15 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     private HomePage homePage;
     private CustomerLoginPage customerLoginPage;
     private Assertions assertions;
+    private BankManagerLoginPage bankManagerLoginPage;
+
 
     @BeforeMethod
     public void openBankHomePage() {
         homePage = new HomePage();
         customerLoginPage = new CustomerLoginPage();
         assertions = new Assertions();
+        bankManagerLoginPage = new BankManagerLoginPage();
         homePage.open();
     }
 
@@ -30,6 +38,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .customerLoginBtnClick();
         assertions.assertUrlContains("customer");
     }
+
     @Test
     public void checkBtnWithdrown() {
         homePage
@@ -45,7 +54,7 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
     }
 
     @Test
-    public void selectedCustomerAccountTest(){
+    public void selectedCustomerAccountTest() {
         homePage
                 .customerLoginBtnClick();
         customerLoginPage
@@ -55,4 +64,37 @@ public class CustomerLoginAccountTests extends AbstractBaseTest {
                 .clickBtnLogin();
         assertions.assertUrlContains("account");
     }
+
+    @Test
+    public void check_the_withdrawl_not_successful() {
+
+        List<CustomerLoginPage> arrayMassage = new ArrayList<>();
+        List<String> arrayMassageTest = Arrays.asList("element not found", "element not found");
+
+        homePage
+                .bankManagerLoginButtonClick();
+        bankManagerLoginPage
+                .addCustomerLoginButtonClick()
+                .addNewCustomer("Ivan", "Ivanenko", "E5512")
+                .addCurrencyToAccount("Ivan Ivanenko", "Dollar")
+                .clickGoHomePage();
+        homePage
+                .customerLoginBtnClick();
+        customerLoginPage
+                .selectAccount("Ivan Ivanenko")
+                .clickBtnLogin()
+                .clickBtnWithdrawn()
+                .setValueWithdrawl("0")
+                .clickWithdrawl();
+        arrayMassage.add(customerLoginPage.getMassageWithdrawl());
+
+        customerLoginPage
+                .setValueWithdrawl("-5")
+                .clickWithdrawl();
+        arrayMassage.add(customerLoginPage.getMassageWithdrawl());
+
+        Assert.assertFalse(arrayMassageTest.containsAll(arrayMassage));
+
+    }
+
 }
